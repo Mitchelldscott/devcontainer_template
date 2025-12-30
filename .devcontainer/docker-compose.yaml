@@ -1,0 +1,19 @@
+services:
+    base:
+        build:
+            context: ../
+            dockerfile: .devcontainer/Dockerfile
+            args:
+                - USERNAME=${USERNAME}
+                - USER_UID=${USER_UID}
+                - USER_GID=${USER_GID}
+                - BASE_IMAGE=${BASE_IMAGE}
+                - PROJECT_NAME=${PROJECT_NAME}
+        hostname: dyseware-devbox
+        volumes:
+            - ../:/home/${USERNAME}/${PROJECT_NAME}:cache
+
+    devcontainer:
+        extends: base
+        tty: true
+        stdin_open: true

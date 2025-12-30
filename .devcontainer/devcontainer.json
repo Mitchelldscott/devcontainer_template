@@ -1,0 +1,41 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/rust
+{
+    "name": "DyseDevBox",
+    "dockerComposeFile": ["docker-compose.yaml"],
+    "service": "devcontainer",
+    "workspaceFolder": "/home/mdsdev/devbox",
+
+    "mounts": [
+        "source=${localEnv:HOME}/.gitconfig,target=/home/mdsdev/.gitconfig,type=bind,consistency=cached"
+    ],
+
+    // Features to add to the dev container. More info: https://containers.dev/features.
+    // "features": {
+    //     "./features/rust": {},
+    //     "./features/python": {},
+    //     "./features/cpp": {},
+    //     "./features/julia": {},
+    //     "./features/arduino": {},
+    //     "./features/arm": {},
+    //     "./features/ros": {}
+    // },
+
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    // "forwardPorts": [],
+
+    // Use 'postCreateCommand' to run commands after the container is created.
+    // "postCreateCommand": "sleep infinity",
+
+    // Configure tool-specific properties.
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "extensions": ["google.geminicodeassist"]
+            }
+        }
+    },
+
+    // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+    "remoteUser": "${localEnv:USERNAME}"
+}

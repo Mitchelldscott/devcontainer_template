@@ -1,0 +1,54 @@
+{
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "always",
+        "source.organizeImports": "always"
+    },
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    // --- Markdown & TOML Configuration ---
+    "[markdown]": {
+        "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+    },
+    "[toml]": {
+        "editor.defaultFormatter": "tamasfe.even-better-toml"
+    },
+    // --- Workspace Dictionary ---
+    "cSpell.words": [
+        "arduino",
+        "clippy",
+        "Clippy",
+        "davidanson",
+        "debian",
+        "dependi",
+        "devbox",
+        "DYSEDEV",
+        "dyseware",
+        "eamodio",
+        "errorlens",
+        "esbenp",
+        "isort",
+        "julialang",
+        "jupyter",
+        "Keil",
+        "linkerscript",
+        "MCAP",
+        "microcontroller",
+        "njpwerner",
+        "NOPASSWD",
+        "passwordless",
+        "pylance",
+        "redhat",
+        "serayuzgur",
+        "tamasfe",
+        "toolsai",
+        "userdel",
+        "userland",
+        "usernamehw",
+        "vadimcn",
+        "vsconan",
+        "workdir",
+        "xaver",
+        "zixuanwang"
+    ]
+}

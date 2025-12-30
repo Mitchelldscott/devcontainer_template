@@ -1,0 +1,24 @@
+{
+    "id": "cpp",
+    "version": "1.0.0",
+    "name": "C++ Development",
+    "description": "Installs C++ extensions and settings",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cpptools",
+                "llvm-vs-code-extensions.vscode-clangd",
+                "vadimcn.vscode-lldb",
+                "ms-vscode.cmake-tools",
+                "xaver.clang-format",
+                "fri-bit.vsconan",
+                "eamodio.gitlens"
+            ],
+            "settings": {
+                "[cpp]": {
+                    "editor.defaultFormatter": "xaver.clang-format"
+                }
+            }
+        }
+    }
+}

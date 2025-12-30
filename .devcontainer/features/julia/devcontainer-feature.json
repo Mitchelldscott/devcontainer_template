@@ -1,0 +1,16 @@
+{
+    "id": "julia",
+    "version": "1.0.0",
+    "name": "Julia Development",
+    "description": "Installs Julia extensions and settings",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "julialang.language-julia"
+            ],
+            "settings": {
+                "[julia]": { "editor.defaultFormatter": "julialang.language-julia" }
+            }
+        }
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "id": "rust",
+    "version": "1.0.0",
+    "name": "Rust Development",
+    "description": "Installs Rust extensions and settings",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "rust-lang.rust-analyzer",
+                "vadimcn.vscode-lldb",
+                "tamasfe.even-better-toml",
+                "probe-rs.probe-rs-debugger",
+                "eamodio.gitlens"
+            ],
+            "settings": {
+                "[rust]": {
+                    "editor.defaultFormatter": "rust-lang.rust-analyzer"
+                }
+            }
+        }
+    }
+}

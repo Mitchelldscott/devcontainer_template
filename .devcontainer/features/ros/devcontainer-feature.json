@@ -1,0 +1,19 @@
+{
+    "id": "ros",
+    "version": "1.0.0",
+    "name": "ROS Development",
+    "description": "Installs extensions for ROS2 development.",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "Ranch-Hand-Robotics.rde-ros-2",
+                "morningfrog.urdf-visualizer",
+                "Kodo-Robotics.launchmap",
+                "ms-vscode.cpptools",
+                "ms-python.python",
+                "ms-vscode.cmake-tools",
+                "dotjoshjohnson.xml"
+            ]
+        }
+    }
+}

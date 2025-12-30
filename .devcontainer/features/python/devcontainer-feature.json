@@ -1,0 +1,26 @@
+{
+    "id": "python",
+    "version": "1.0.0",
+    "name": "Python Development",
+    "description": "Installs Python extensions and settings",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "eamodio.gitlens",
+                "ms-python.isort",
+                "ms-python.flake8",
+                "ms-python.python",
+                "ms-python.pylance",
+                "ms-toolsai.jupyter",
+                "h5web.vscode-h5web",
+                "njpwerner.autodocstring",
+                "ms-python.black-formatter"
+            ],
+            "settings": {
+                "[python]": {
+                    "editor.defaultFormatter": "ms-python.black-formatter"
+                }
+            }
+        }
+    }
+}

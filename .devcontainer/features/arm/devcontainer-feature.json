@@ -1,0 +1,17 @@
+{
+    "id": "arm",
+    "version": "1.0.0",
+    "name": "ARM Development",
+    "description": "Installs extensions for ARM embedded development.",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "marus25.cortex-debug",
+                "ms-vscode.cpptools",
+                "dan-c-underwood.arm",
+                "zixuanwang.linkerscript",
+                "ms-vscode.cmake-tools"
+            ]
+        }
+    }
+}
