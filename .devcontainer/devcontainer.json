@@ -4,10 +4,11 @@
     "name": "DyseDevBox",
     "dockerComposeFile": ["docker-compose.yaml"],
     "service": "devcontainer",
-    "workspaceFolder": "/home/mdsdev/devbox",
+    "workspaceFolder": "/home/mdsdev",
 
     "mounts": [
-        "source=${localEnv:HOME}/.gitconfig,target=/home/mdsdev/.gitconfig,type=bind,consistency=cached"
+        "source=~/.ssh,target=/home/mdsdev/.ssh,type=bind,consistency=cached",
+        "source=~/.gitconfig,target=/home/mdsdev/.gitconfig,type=bind,consistency=cached"
     ],
 
     // Features to add to the dev container. More info: https://containers.dev/features.
