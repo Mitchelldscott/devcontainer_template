@@ -1,66 +1,34 @@
-# Dyseware DevBox: A Robotics Development Environment
+# Dev Container Project Template
 
-## Overview
+This project template uses a VS Code dev container setup to create a customizable development environment based on Debian GNU/Linux 12 (bookworm). It leverages Docker and dev container features to install and configure tools for various programming languages and frameworks. Below is an explanation based on the configuration files in .devcontainer.
 
-Dyseware DevBox is a versatile and reusable development container designed for robotics projects. It provides a consistent and fully-equipped environment with a wide range of tools for robotics, low-level development, and emulation. This dev container is built to be a starting point for various robotics projects, ensuring that you have the right tools from the get-go.
+## Core Setup via Dockerfile
+The [`devbox/.devcontainer/Dockerfile`](devbox/.devcontainer/Dockerfile "devbox/.devcontainer/Dockerfile") defines the container's base image and initial configuration:
+- Starts from a Debian slim image.
+- Installs essential development tools like `sudo`, `git`, `vim`, `curl`, `wget`, `build-essential`, and `openssh-server`.
+- Creates a non-root user with specified UID/GID and grants sudo access without a password.
+- Copies the project workspace into the container and sets the working directory.
 
-## Features
+This ensures a consistent, isolated environment for development.
 
-This dev container comes pre-configured with a variety of tools and features, including:
+## Feature-Based Installations
+The template uses dev container features (modular extensions) to add language-specific tools. Each feature has an [`devbox/.devcontainer/features/arduino/install.sh`](devbox/.devcontainer/features/arduino/install.sh ) script that runs as root during container build:
+- ROS feature: Activates ROS (Robot Operating System) support.
+- Arduino feature: Activates Arduino development tools.
+- ARM feature: Activates ARM toolchain support.
+- Julia feature: Activates Julia language environment.
+- Rust feature: Activates Rust compiler and tools.
+- C++ feature: Activates C++ development tools.
+- Python feature: Activates Python environment.
 
-- **Robot Operating System (ROS):** For building and simulating robotics applications.
-- **Gazebo:** A powerful 3D robotics simulator.
-- **Multi-language Support:**
-  - **C/C++:** For performance-critical code and low-level hardware interaction.
-  - **Python:** For rapid prototyping, scripting, and data analysis.
-  - **Rust:** For memory-safe systems programming.
-  - **Julia:** For high-performance numerical and scientific computing.
-- **Embedded Development:**
-  - **Arduino:** For programming microcontrollers.
-  - **ARM:** For cross-compilation and development for ARM-based systems.
-- **Low-level Debugging and Emulation:** Tools for debugging and emulating hardware.
-- **Persistent Caches:** For faster builds and package management.
-- **Customizable:** Easily extend and customize the environment to fit your project's specific needs.
+These scripts echo activation messages but can be extended for actual installations (e.g., via `apt` or custom commands).
 
-## Getting Started
+## User Profile Configuration
+The [`devbox/scripts/set_profile.bash`](devbox/scripts/set_profile.bash "devbox/scripts/set_profile.bash") script updates the `.devcontainer/.env` file with the host user's UID, GID, and username. This ensures the container user matches the host for file permissions.
 
-To get started with the Dyseware DevBox, you'll need to have [Visual Studio Code](https://code.visualstudio.com/) and the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) installed.
+## How It Works
+1. **Build Process**: When opening in VS Code, the dev container builds the Docker image using the Dockerfile, applies features via their install scripts, and sets up the user environment.
+2. **Customization**: Features can be enabled/disabled in the dev container config (e.g., `devcontainer.json`, not shown here). The template supports multiple languages in one container.
+3. **Usage**: Run the container to get a pre-configured workspace with tools for ROS, Arduino, ARM, Julia, Rust, C++, and Python. Use commands like `$BROWSER <url>` to open web pages in the host browser.
 
-1. **Clone this repository:**
-
-    ```bash
-    git clone https://github.com/your-username/devcontainer_template.git
-    ```
-
-2. **Open in VS Code:** Open the cloned repository in Visual Studio Code.
-3. **Reopen in Container:** VS Code will detect the `.devcontainer` configuration and prompt you to "Reopen in Container". Click on it.
-
-This will build the Docker container and set up your development environment.
-
-## Configuration
-
-The dev container is configured using the following files:
-
-- **`.devcontainer/devcontainer.json`:** The main configuration file for the dev container. You can enable or disable features by commenting or uncommenting them in the `features` section.
-- **`.vscode/extensions/*.json`:** Individual feature configurations. You can customize the installation of each feature by modifying these files.
-- **`docker/docker-compose.yaml`:** The Docker Compose file that defines the services, networks, and volumes for the dev container.
-- **`docker/Dockerfile`:** The Dockerfile that builds the base image for the dev container. You can add or remove system dependencies here.
-- **`.devcontainer/.env`:** This file is used to store environment variables for the build process. You will need to create this file and populate it with the required variables.
-
-### `.env` file example
-
-Create a `.devcontainer/.env` file with the following content:
-
-```dockerfile
-USERNAME=dev
-USER_UID=1000
-USER_GID=1000
-BASE_IMAGE=ubuntu:22.04
-PROJECT_NAME=my-robotics-project
-WORKSPACE_DIR=/home/dev/workspaces
-LOCAL_SETUP_DIR=./
-```
-
-## Contributing
-
-Contributions are welcome! If you have any suggestions, bug reports, or feature requests, please open an issue or submit a pull request.
+For more details, refer to the [dev container specification](https://containers.dev/implementors/features#install-sh). If you need to modify or add features, edit the respective [`devbox/.devcontainer/features/arduino/install.sh`](devbox/.devcontainer/features/arduino/install.sh ) files.
