@@ -7,8 +7,8 @@
     "workspaceFolder": "/home/${localEnv:USERNAME}/${localEnv:PROJECT_NAME}",
 
     "mounts": [
-        "source=~/.ssh,target=/home/${localEnv:USERNAME}/.ssh,type=bind,consistency=cached",
-        "source=~/.gitconfig,target=/home/${localEnv:USERNAME}/.gitconfig,type=bind,consistency=cached"
+        "source=~/.ssh,target=/home/${USERNAME}/.ssh,type=bind,consistency=cached",
+        "source=~/.gitconfig,target=/home/${USERNAME}/.gitconfig,type=bind,consistency=cached"
     ],
 
     // Features to add to the dev container. More info: https://containers.dev/features.
