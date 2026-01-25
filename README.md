@@ -1,34 +1,32 @@
 # Dev Container Project Template
 
-This project template uses a VS Code dev container setup to create a customizable development environment based on Debian GNU/Linux 12 (bookworm). It leverages Docker and dev container features to install and configure tools for various programming languages and frameworks. Below is an explanation based on the configuration files in .devcontainer.
+A customizable VS Code dev container environment based on Debian 12 (Bookworm). Designed for robotics and embedded development with modular feature support.
 
-## Core Setup via Dockerfile
-The [`devbox/.devcontainer/Dockerfile`](devbox/.devcontainer/Dockerfile "devbox/.devcontainer/Dockerfile") defines the container's base image and initial configuration:
-- Starts from a Debian slim image.
-- Installs essential development tools like `sudo`, `git`, `vim`, `curl`, `wget`, `build-essential`, and `openssh-server`.
-- Creates a non-root user with specified UID/GID and grants sudo access without a password.
-- Copies the project workspace into the container and sets the working directory.
+## Quick Start
 
-This ensures a consistent, isolated environment for development.
+1.  **Initialize Environment**:
+    Set your project name (required by `devcontainer.json`):
+    ```bash
+    export PROJECT_NAME="my-project"
+    ```
 
-## Feature-Based Installations
-The template uses dev container features (modular extensions) to add language-specific tools. Each feature has an [`devbox/.devcontainer/features/arduino/install.sh`](devbox/.devcontainer/features/arduino/install.sh ) script that runs as root during container build:
-- ROS feature: Activates ROS (Robot Operating System) support.
-- Arduino feature: Activates Arduino development tools.
-- ARM feature: Activates ARM toolchain support.
-- Julia feature: Activates Julia language environment.
-- Rust feature: Activates Rust compiler and tools.
-- C++ feature: Activates C++ development tools.
-- Python feature: Activates Python environment.
+2.  **Configure User**:
+    Sync host user permissions to the container:
+    ```bash
+    ./scripts/set_profile.bash
+    ```
 
-These scripts echo activation messages but can be extended for actual installations (e.g., via `apt` or custom commands).
+3.  **Launch**:
+    Open this folder in VS Code and run **Dev Containers: Reopen in Container**.
 
-## User Profile Configuration
-The [`devbox/scripts/set_profile.bash`](devbox/scripts/set_profile.bash "devbox/scripts/set_profile.bash") script updates the `.devcontainer/.env` file with the host user's UID, GID, and username. This ensures the container user matches the host for file permissions.
+## Architecture
 
-## How It Works
-1. **Build Process**: When opening in VS Code, the dev container builds the Docker image using the Dockerfile, applies features via their install scripts, and sets up the user environment.
-2. **Customization**: Features can be enabled/disabled in the dev container config (e.g., `devcontainer.json`, not shown here). The template supports multiple languages in one container.
-3. **Usage**: Run the container to get a pre-configured workspace with tools for ROS, Arduino, ARM, Julia, Rust, C++, and Python. Use commands like `$BROWSER <url>` to open web pages in the host browser.
+*   **Core**: Debian Bookworm Slim with `build-essential`, `git`, `vim`, and `openssh-server`.
+*   **Orchestration**: Uses `docker-compose` to mount the workspace and handle networking.
+*   **Features**: Modular install scripts located in `.devcontainer/features/`. Uncomment required languages (Rust, Python, C++, ROS, etc.) in `.devcontainer/devcontainer.json` to enable them.
 
-For more details, refer to the [dev container specification](https://containers.dev/implementors/features#install-sh). If you need to modify or add features, edit the respective [`devbox/.devcontainer/features/arduino/install.sh`](devbox/.devcontainer/features/arduino/install.sh ) files.
+## Configuration
+
+*   **`Dockerfile`**: Base image setup.
+*   **`docker-compose.yaml`**: Defines services and volume mounts.
+*   **`devcontainer.json`**: VS Code settings, extensions, and feature toggles.
