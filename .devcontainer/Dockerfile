@@ -40,5 +40,6 @@ RUN apt-get update && apt-get upgrade -y
 
 USER ${USERNAME}
 ENV SHELL=/bin/bash
+RUN echo "source /home/${USERNAME}/${PROJECT_NAME}/scripts/bash_prompt.bash" >> /home/${USERNAME}/.bashrc
 COPY ./ /home/${USERNAME}/${PROJECT_NAME}
 WORKDIR /home/${USERNAME}/${PROJECT_NAME}

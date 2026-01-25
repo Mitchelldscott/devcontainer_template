@@ -6,13 +6,6 @@
     },
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
-    // --- Markdown & TOML Configuration ---
-    "[markdown]": {
-        "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
-    },
-    "[toml]": {
-        "editor.defaultFormatter": "tamasfe.even-better-toml"
-    },
     // --- Workspace Dictionary ---
     "cSpell.words": [
         "arduino",

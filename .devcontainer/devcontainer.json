@@ -26,13 +26,16 @@
     // "forwardPorts": [],
 
     // Use 'postCreateCommand' to run commands after the container is created.
-    // "postCreateCommand": "sleep infinity",
+    // "postCreateCommand": "",
 
     // Configure tool-specific properties.
     "customizations": {
         "vscode": {
             "settings": {
-                "extensions": ["google.geminicodeassist"]
+                "extensions": [
+                    "google.geminicodeassist",
+                    "esbenp.prettier-vscode"
+                ]
             }
         }
     },
