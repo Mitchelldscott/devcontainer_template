@@ -9,7 +9,9 @@ ARG USER_UID
 ARG USER_GID
 ARG PROJECT_NAME
 
+ENV SHELL=/bin/bash
 ENV PROJECT_NAME=${PROJECT_NAME}
+ENV USERNAME=${USERNAME}
 
 # =============================================================================
 # Development Tools: Essential utilities for development
@@ -38,8 +40,8 @@ RUN groupadd --gid $USER_GID $USERNAME \
     && chmod 0440 /etc/sudoers.d/$USERNAME
 RUN apt-get update && apt-get upgrade -y
 
-USER ${USERNAME}
-ENV SHELL=/bin/bash
 RUN echo "source /home/${USERNAME}/${PROJECT_NAME}/scripts/bash_prompt.bash" >> /home/${USERNAME}/.bashrc
+
+USER ${USERNAME}
 COPY ./ /home/${USERNAME}/${PROJECT_NAME}
 WORKDIR /home/${USERNAME}/${PROJECT_NAME}
