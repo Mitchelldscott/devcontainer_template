@@ -4,7 +4,7 @@
     "name": "DyseDevBox",
     "dockerComposeFile": ["docker-compose.yaml"],
     "service": "devcontainer",
-    "workspaceFolder": "/home/mdsdev",
+    "workspaceFolder": "/home/mdsdev/devbox",
 
     "mounts": [
         "source=~/.ssh,target=/home/mdsdev/.ssh,type=bind,consistency=cached",
