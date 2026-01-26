@@ -17,10 +17,10 @@ apt-get update && apt-get install -y --no-install-recommends \
 
 rm -rf /var/lib/apt/lists/*
 
-python3 -m venv ${PROJECT_NAME}_pyenv
+python3 -m venv pyenv
 
 if [[ -f requirements.txt ]]; then
     echo "Detected 'requirements.txt', installing dependencies"
-    source ${PROJECT_NAME}_pyenv/bin/activate
+    source pyenv/bin/activate
     pip install -r requirements.txt
 fi

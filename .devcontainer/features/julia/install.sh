@@ -1,17 +1,15 @@
 #!/bin/bash
 set -e
 
-# The 'install.sh' script is executed as root in a feature's container.
-# It should be used to install and configure the feature.
-#
-# For more information, see: https://containers.dev/implementors/features#install-sh
-echo "Activating feature 'julia'"
+echo "Activating feature 'julia' (Global Install)"
+
+export JULIAUP_DEPOT_PATH="/opt/juliaup"
 
 curl -fsSL https://install.julialang.org | sh -s -- -y
 
-echo 'export PATH="${HOME}/.juliaup/bin:${PATH}"' >> ~/.bashrc
+echo 'export PATH=$PATH:/opt/juliaup/bin' > /etc/profile.d/juliaup.sh
+chmod +x /etc/profile.d/juliaup.sh
 
-if [[ -f Project.toml ]]; then
-    echo "Detected 'Project.toml', installing dependencies"
-    ${HOME}/.juliaup/bin --project=. -e 'using Pkg; Pkg.instantiate()'
-fi
+chmod -R 777 "/opt/juliaup"
+
+rm -rf /tmp/julia_install
