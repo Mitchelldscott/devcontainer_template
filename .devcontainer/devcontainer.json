@@ -12,15 +12,14 @@
     ],
 
     // Features to add to the dev container. More info: https://containers.dev/features.
-    // "features": {
-    //     "./features/rust": {},
-    //     "./features/python": {},
-    //     "./features/cpp": {},
-    //     "./features/julia": {},
-    //     "./features/arduino": {},
-    //     "./features/arm": {},
+    "features": {
+        "./features/rust": {},
+        "./features/python": {},
+        "./features/cpp": {},
+        "./features/julia": {},
+        "./features/arm": {}
     //     "./features/ros": {}
-    // },
+    },
 
     // Use 'forwardPorts' to make a list of ports inside the container available locally.
     // "forwardPorts": [],

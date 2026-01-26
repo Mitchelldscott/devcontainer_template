@@ -6,3 +6,14 @@ set -e
 #
 # For more information, see: https://containers.dev/implementors/features#install-sh
 echo "Activating feature 'rust'"
+
+export RUSTUP_HOME=/usr/local/rustup
+export CARGO_HOME=/usr/local/cargo
+
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+
+echo 'source "${CARGO_HOME}/env"' >> ~/.bashrc
+
+source "${CARGO_HOME}/env"
+
+rustup component add clippy rustfmt

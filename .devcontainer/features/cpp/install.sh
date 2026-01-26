@@ -6,3 +6,16 @@ set -e
 #
 # For more information, see: https://containers.dev/implementors/features#install-sh
 echo "Activating feature 'cpp'"
+
+apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    cmake \
+    ninja-build \
+    gdb \
+    clang \
+    clang-format \
+    clang-tidy \
+    lldb \
+    ccache
+
+rm -rf /var/lib/apt/lists/*
