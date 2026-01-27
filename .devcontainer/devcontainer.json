@@ -33,7 +33,8 @@
             "settings": {
                 "extensions": [
                     "google.geminicodeassist",
-                    "esbenp.prettier-vscode"
+                    "esbenp.prettier-vscode",
+                    "github.vscode-github-actions"
                 ]
             }
         }
