@@ -21,7 +21,7 @@ colorize_git_prompt() {
 }
 
 # Set PS1
-PS1='$(colorize_git_prompt)$(git_branch)\[\033[0;32m\]\u@\h\[\033[0m\]:\[\033[0;34m\]\w\[\033[0m\]\$ '
+PS1='$(colorize_git_prompt)$(git_branch)\[\033[0;32m\]\u@\h\[\033[0m\]:\[\033[1;34m\]\w\[\033[0m\]\$ '
 
 # --- Aliases ---
 alias ll='ls -la'
